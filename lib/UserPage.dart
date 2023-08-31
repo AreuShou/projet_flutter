@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projet_flutter/createProfile.dart';
-import 'package:projet_flutter/userProfile.dart';
+//import 'package:projet_flutter/userProfile.dart';
 //import 'package:projet_flutter/main.dart';
 //import 'CreateProfile.dart';
 
@@ -27,6 +27,9 @@ class _UserPageState extends State<UserPage> {
     {"name": "Michael Johnson", "age": 28},
   ];
 
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +41,11 @@ class _UserPageState extends State<UserPage> {
       body: ListView.builder(
         itemCount: contacts.length,
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(
+          return GestureDetector(
+            onTap: () {
+             // _openUserPage(index); // Ouvre la page de profil avec modifications
+            },
+            child: ListTile(
             leading: Container(
               width: 40,
               height: 40,
@@ -56,13 +63,14 @@ class _UserPageState extends State<UserPage> {
             title: Text(contacts[index]["name"]),
             subtitle: Text(" ${contacts[index]["age"]} ans"),
             // Ajoutez d'autres widgets d'affichage pour chaque contact si nécessaire
+            ),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => UserProfile()),
+            MaterialPageRoute(builder: (context) => create()),
           );
         },
         backgroundColor: Colors.black,
@@ -70,5 +78,6 @@ class _UserPageState extends State<UserPage> {
         child: const Icon(Icons.add),
       ),
     );
+    
   }
 }

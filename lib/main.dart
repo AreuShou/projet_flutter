@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projet_flutter/UserPage.dart';
-import 'package:projet_flutter/createProfile.dart';
-import 'package:projet_flutter/editProfile.dart';
+//import 'package:projet_flutter/createProfile.dart';
+//import 'package:projet_flutter/editProfile.dart';
 import 'package:projet_flutter/notification.dart';
 
 void main() {
@@ -37,7 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _pages = [
     const UserPage(),
-    notification(),
+    notification()
+    //createpage(),
   
   ];
 

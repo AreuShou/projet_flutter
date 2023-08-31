@@ -42,6 +42,7 @@ dependencies:
   icons_plus: ^4.0.0
   flutter_animated_icons: ^1.0.1
   firebase_auth: ^4.8.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

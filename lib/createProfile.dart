@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:projet_flutter/UserPage.dart';
 
-class createpage extends StatelessWidget {
+class create extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
+
+  create({super.key});
+
+ 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Create user'),
-        foregroundColor: Color.fromARGB(255, 243, 241, 241),
-        backgroundColor: Color.fromARGB(255, 15, 15, 15),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -48,7 +53,7 @@ class createpage extends StatelessWidget {
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: lastNameController,
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                   decoration: const InputDecoration(
                     labelText: 'Lastname',
                     labelStyle: TextStyle(color: Colors.black),
@@ -64,7 +69,7 @@ class createpage extends StatelessWidget {
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: ageController,
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                   decoration: const InputDecoration(
                     labelText: 'Age',
                     labelStyle: TextStyle(color: Colors.black),
@@ -84,7 +89,7 @@ class createpage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => UserPage(),
+                          builder: (context) => const UserPage(),
                         ),
                       );
                     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet_flutter/editProfile.dart';
 
 class UserProfile extends StatelessWidget {
   @override
@@ -11,6 +12,13 @@ class UserProfile extends StatelessWidget {
           title: const Text('User profile'),
           backgroundColor: Colors.black,
           centerTitle: true,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context)
+                  .pop(); // Quitte la page et retourne à la page précédente
+            },
+          ),
         ),
         body: Center(
           child: Column(
@@ -21,7 +29,7 @@ class UserProfile extends StatelessWidget {
                 height: 300,
                 margin:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                child: Card(
+                child: const Card(
                   child: Padding(
                     padding: EdgeInsets.all(10),
                     child: Column(
@@ -35,35 +43,62 @@ class UserProfile extends StatelessWidget {
                           'Nom d\'utilisateur',
                           style: TextStyle(fontSize: 20),
                         ),
-                        SizedBox(height: 10),
-                        Text('Adresse email'),
-                        SizedBox(height: 10),
-                        Text('Autres informations sur l\'utilisateur'),
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Action du premier bouton
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => editProfile(),// Ouvrir la page d'édition
+                    ),
+                  );
                 },
                 child: Text('Edit profile'),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black,
-                  minimumSize: Size(double.infinity, 50), // Élargir le bouton
+                  minimumSize: const Size(double.infinity, 50),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  // Action du deuxième bouton
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Confirmation'),
+                        content: const Text(
+                            'Voulez-vous vraiment supprimer cet utilisateur?'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pop(); // Ferme la boîte de dialogue
+                            },
+                            child: const Text('Annuler'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              // Ajoutez ici l'action à effectuer lors de la suppression
+                              Navigator.of(context)
+                                  .pop(); // Ferme la boîte de dialogue
+                            },
+                            child: const Text('Supprimer'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
                 child: Text('Delete user'),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  minimumSize: Size(double.infinity, 50), // Élargir le bouton
+                  primary: const Color.fromARGB(255, 119, 117, 117),
+                  minimumSize: const Size(double.infinity, 50),
                 ),
               ),
             ],
@@ -74,6 +109,6 @@ class UserProfile extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(UserProfile());
-}
+//void main() {
+  //runApp(UserProfile());
+//}
